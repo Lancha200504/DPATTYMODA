@@ -62,7 +62,7 @@ public class Chat {
     private String categoria; // consulta_producto, problema_pedido, devolucion, general
 
     @Column(name = "etiquetas")
-    private String[] etiquetas;
+    private String etiquetas; // JSON string para MySQL
 
     @Column(name = "satisfaccion_cliente")
     private Integer satisfaccionCliente; // 1-5 estrellas

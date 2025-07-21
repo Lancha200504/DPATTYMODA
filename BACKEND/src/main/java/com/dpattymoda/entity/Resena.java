@@ -50,10 +50,10 @@ public class Resena {
     private String comentario;
 
     @Column(name = "ventajas")
-    private String[] ventajas;
+    private String ventajas; // JSON string para MySQL
 
     @Column(name = "desventajas")
-    private String[] desventajas;
+    private String desventajas; // JSON string para MySQL
 
     @Column(name = "recomendaria")
     private Boolean recomendaria;

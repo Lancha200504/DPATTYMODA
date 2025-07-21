@@ -55,7 +55,7 @@ public class Promocion {
     private LocalDateTime fechaFin;
 
     @Column(name = "dias_semana")
-    private Integer[] diasSemana; // 1=Lunes, 7=Domingo
+    private String diasSemana; // JSON string para MySQL
 
     @Column(name = "horas_inicio")
     private LocalTime horasInicio;
@@ -64,13 +64,13 @@ public class Promocion {
     private LocalTime horasFin;
 
     @Column(name = "sucursales_incluidas")
-    private UUID[] sucursalesIncluidas;
+    private String sucursalesIncluidas; // JSON string para MySQL
 
     @Column(name = "categorias_incluidas")
-    private UUID[] categoriasIncluidas;
+    private String categoriasIncluidas; // JSON string para MySQL
 
     @Column(name = "productos_incluidos")
-    private UUID[] productosIncluidos;
+    private String productosIncluidos; // JSON string para MySQL
 
     @Builder.Default
     @Column(name = "aplicable_online")

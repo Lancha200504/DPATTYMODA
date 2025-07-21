@@ -76,7 +76,7 @@ public class Producto {
     private String imagenes;
 
     @Column(name = "tags")
-    private String[] tags;
+    private String tags; // JSON string para MySQL
 
     @Builder.Default
     @Column(name = "activo")
@@ -112,7 +112,7 @@ public class Producto {
     private String seoDescripcion;
 
     @Column(name = "seo_palabras_clave")
-    private String[] seoPalabrasClave;
+    private String seoPalabrasClave; // JSON string para MySQL
 
     @CreatedDate
     @Column(name = "fecha_creacion", nullable = false, updatable = false)

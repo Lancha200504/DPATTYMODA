@@ -25,19 +25,43 @@ public abstract class ChatMapper {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Mapping(target = "id", source = "id")
     @Mapping(target = "usuario", expression = "java(mapUsuarioBasico(chat.getUsuario()))")
     @Mapping(target = "empleadoAsignado", expression = "java(mapUsuarioBasico(chat.getEmpleadoAsignado()))")
     @Mapping(target = "producto", expression = "java(mapProductoBasico(chat.getProducto()))")
     @Mapping(target = "numeroPedido", expression = "java(chat.getPedido() != null ? chat.getPedido().getNumeroPedido() : null)")
+    @Mapping(target = "asunto", source = "asunto")
+    @Mapping(target = "estado", source = "estado")
+    @Mapping(target = "prioridad", source = "prioridad")
+    @Mapping(target = "categoria", source = "categoria")
     @Mapping(target = "etiquetas", expression = "java(arrayToList(chat.getEtiquetas()))")
+    @Mapping(target = "satisfaccionCliente", source = "satisfaccionCliente")
+    @Mapping(target = "comentarioSatisfaccion", source = "comentarioSatisfaccion")
+    @Mapping(target = "fechaPrimerMensaje", source = "fechaPrimerMensaje")
+    @Mapping(target = "fechaUltimoMensaje", source = "fechaUltimoMensaje")
+    @Mapping(target = "fechaCierre", source = "fechaCierre")
     @Mapping(target = "tiempoPrimeraRespuesta", expression = "java(durationToString(chat.getTiempoPrimeraRespuesta()))")
     @Mapping(target = "tiempoResolucion", expression = "java(durationToString(chat.getTiempoResolucion()))")
+    @Mapping(target = "motivoCierre", source = "motivoCierre")
     @Mapping(target = "mensajesNoLeidos", expression = "java((int)chat.getMensajesNoLeidos(getCurrentUserId()))")
     @Mapping(target = "totalMensajes", expression = "java(chat.getTotalMensajes())")
     public abstract ChatResponse toResponse(Chat chat);
 
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "chatId", source = "chat.id")
     @Mapping(target = "remitente", expression = "java(mapRemitenteResponse(mensaje.getRemitente()))")
+    @Mapping(target = "tipoRemitente", source = "tipoRemitente")
+    @Mapping(target = "contenido", source = "contenido")
+    @Mapping(target = "tipoMensaje", source = "tipoMensaje")
     @Mapping(target = "archivosAdjuntos", expression = "java(jsonToList(mensaje.getArchivosAdjuntos()))")
+    @Mapping(target = "mensajePadreId", source = "mensajePadre.id")
+    @Mapping(target = "estado", source = "estado")
+    @Mapping(target = "editado", source = "editado")
+    @Mapping(target = "fechaEdicion", source = "fechaEdicion")
+    @Mapping(target = "moderado", source = "moderado")
+    @Mapping(target = "fechaLectura", source = "fechaLectura")
+    @Mapping(target = "reacciones", source = "reacciones")
+    @Mapping(target = "fechaEnvio", source = "fechaEnvio")
     public abstract MensajeResponse toResponse(Mensaje mensaje);
 
     protected ChatResponse.UsuarioBasicoResponse mapUsuarioBasico(com.dpattymoda.entity.Usuario usuario) {

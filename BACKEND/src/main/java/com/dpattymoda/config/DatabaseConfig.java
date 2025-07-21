@@ -10,8 +10,7 @@ import javax.sql.DataSource;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 
 /**
- * Configuración de base de datos para DPattyModa
- * Configurado para MySQL
+ * Configuración de base de datos MySQL para DPattyModa
  */
 @Configuration
 @EnableJpaRepositories(basePackages = "com.dpattymoda.repository")
@@ -21,6 +20,8 @@ public class DatabaseConfig {
     @Bean
     @ConfigurationProperties("spring.datasource")
     public DataSource dataSource() {
-        return DataSourceBuilder.create().build();
+        DataSourceBuilder<?> builder = DataSourceBuilder.create();
+        builder.driverClassName("com.mysql.cj.jdbc.Driver");
+        return builder.build();
     }
 }

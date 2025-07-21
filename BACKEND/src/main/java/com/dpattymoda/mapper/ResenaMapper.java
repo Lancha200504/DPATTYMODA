@@ -21,12 +21,27 @@ public abstract class ResenaMapper {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Mapping(target = "id", source = "id")
     @Mapping(target = "producto", source = "producto")
+    @Mapping(target = "calificacion", source = "calificacion")
+    @Mapping(target = "titulo", source = "titulo")
+    @Mapping(target = "comentario", source = "comentario")
     @Mapping(target = "usuario", expression = "java(mapUsuario(resena))")
     @Mapping(target = "ventajas", expression = "java(arrayToList(resena.getVentajas()))")
     @Mapping(target = "desventajas", expression = "java(arrayToList(resena.getDesventajas()))")
+    @Mapping(target = "recomendaria", source = "recomendaria")
+    @Mapping(target = "verificada", source = "verificada")
+    @Mapping(target = "estadoModeracion", source = "estadoModeracion")
+    @Mapping(target = "fechaModeracion", source = "fechaModeracion")
+    @Mapping(target = "motivoRechazo", source = "motivoRechazo")
+    @Mapping(target = "utilidadPositiva", source = "utilidadPositiva")
+    @Mapping(target = "utilidadNegativa", source = "utilidadNegativa")
+    @Mapping(target = "reportes", source = "reportes")
     @Mapping(target = "imagenes", expression = "java(jsonToList(resena.getImagenes()))")
     @Mapping(target = "varianteComprada", expression = "java(mapVarianteComprada(resena))")
+    @Mapping(target = "fechaCompra", source = "fechaCompra")
+    @Mapping(target = "fechaResena", source = "fechaResena")
+    @Mapping(target = "fechaActualizacion", source = "fechaActualizacion")
     public abstract ResenaResponse toResponse(Resena resena);
 
     protected List<String> arrayToList(String[] array) {

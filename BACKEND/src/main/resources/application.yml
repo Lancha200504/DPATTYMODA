@@ -12,7 +12,7 @@ spring:
 
   # Configuración de base de datos
   datasource:
-    url: ${DATABASE_URL:jdbc:mysql://localhost:3306/dpatty_moda?useSSL=false&serverTimezone=America/Lima&allowPublicKeyRetrieval=true}
+    url: ${DATABASE_URL:jdbc:mysql://localhost:3306/dpatty_moda?useSSL=false&serverTimezone=America/Lima&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true}
     username: ${DATABASE_USER:root}
     password: ${DATABASE_PASSWORD:password}
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -26,7 +26,7 @@ spring:
   # JPA/Hibernate
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     show-sql: false
     properties:
       hibernate:
@@ -166,7 +166,12 @@ spring:
       on-profile: development
 
   datasource:
-    url: jdbc:mysql://localhost:3306/dpatty_moda_dev?useSSL=false&serverTimezone=America/Lima&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/dpatty_moda_dev?useSSL=false&serverTimezone=America/Lima&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
     
 logging:
   level:

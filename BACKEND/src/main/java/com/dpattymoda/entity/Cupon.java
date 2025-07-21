@@ -76,13 +76,13 @@ public class Cupon {
     private Boolean aplicableEnvio = false;
 
     @Column(name = "categorias_incluidas")
-    private UUID[] categoriasIncluidas; // Array de IDs de categorías
+    private String categoriasIncluidas; // JSON string para MySQL
 
     @Column(name = "productos_incluidos")
-    private UUID[] productosIncluidos; // Array de IDs de productos
+    private String productosIncluidos; // JSON string para MySQL
 
     @Column(name = "usuarios_incluidos")
-    private UUID[] usuariosIncluidos; // Array de IDs de usuarios específicos
+    private String usuariosIncluidos; // JSON string para MySQL
 
     @Builder.Default
     @Column(name = "activo")
